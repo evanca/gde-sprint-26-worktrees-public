@@ -1,0 +1,8 @@
+[
+  {"id":"rel-101","title":"Checkout latency patch","service":"payments-api","environment":"production","status":"healthy","risk":"medium","owner":"Payments","deployedAt":"2026-06-13T07:40:00Z"},
+  {"id":"rel-102","title":"Search ranking refresh","service":"discovery-web","environment":"staging","status":"deploying","risk":"high","owner":"Discovery","deployedAt":"2026-06-13T08:10:00Z"},
+  {"id":"rel-103","title":"Profile cache tuning","service":"identity-api","environment":"production","status":"healthy","risk":"low","owner":"Identity","deployedAt":"2026-06-13T06:55:00Z"},
+  {"id":"rel-104","title":"Notification digest","service":"messaging-worker","environment":"development","status":"blocked","risk":"medium","owner":"Messaging","deployedAt":"2026-06-13T08:25:00Z"},
+  {"id":"rel-105","title":"Billing export v2","service":"finance-jobs","environment":"staging","status":"healthy","risk":"low","owner":"Finance","deployedAt":"2026-06-13T05:30:00Z"},
+  {"id":"rel-106","title":"Session rotation","service":"auth-gateway","environment":"production","status":"deploying","risk":"high","owner":"Identity","deployedAt":"2026-06-13T08:35:00Z"}
+]

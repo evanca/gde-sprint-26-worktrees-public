@@ -1,0 +1,8 @@
+{
+  "name": "developer-release-dashboard-reference",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test && node verify.mjs"
+  }
+}

@@ -1,0 +1,411 @@
+
+<!doctype html>
+
+<html>
+<head>
+  <!-- seo:stamped -->
+  <meta name="description" content="Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.">
+  <meta name="keywords" content="antigravity-2.0, worktrees, concurrency, git">
+  <meta name="author" content="evanca">
+  <link rel="canonical" href="https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees">
+  <meta property="og:description" content="Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.">
+  <meta property="og:url" content="https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/">
+  <meta property="og:site_name" content="2026 Agentic Architect Sprint by Google">
+  <meta property="og:image" content="https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/img/e57742ccc42d7408.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees">
+  <meta name="twitter:description" content="Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.">
+  <meta name="twitter:image" content="https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/img/e57742ccc42d7408.png">
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "headline": "Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees",
+      "description": "Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.",
+      "url": "https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/",
+      "inLanguage": "en",
+      "keywords": "antigravity-2.0, worktrees, concurrency, git",
+      "author": {
+        "@type": "Person",
+        "name": "evanca"
+      },
+      "isPartOf": {
+        "@type": "Course",
+        "name": "2026 Agentic Architect Sprint by Google",
+        "url": "https://happycode.studio"
+      },
+      "image": "https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/img/e57742ccc42d7408.png"
+    },
+    {
+      "@type": "HowTo",
+      "name": "Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees",
+      "description": "Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.",
+      "totalTime": "PT46M",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Prepare Antigravity 2.0"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Prepare the Finished Starter"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Launch Isolated Agent Workspaces"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Inspect Concurrent Changesets"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 5,
+          "name": "Integrate and Resolve the Conflict"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 6,
+          "name": "Verify the Integrated Release"
+        },
+        {
+          "@type": "HowToStep",
+          "position": 7,
+          "name": "Promote and Clean Up"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "2026 Agentic Architect Sprint by Google",
+          "item": "https://happycode.studio"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees",
+          "item": "https://happycode.studio/gde-sprint-26-worktrees-public/parallel-release-worktrees/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QVZ48SGNV9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-QVZ48SGNV9');
+  </script>
+
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <meta name="theme-color" content="#4F7DC9">
+  <meta charset="UTF-8">
+  <title>Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees</title>
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source+Code+Pro:400|Roboto:400,300,400italic,500,700|Roboto+Mono">
+  <link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://storage.googleapis.com/claat-public/codelab-elements.css">
+  <style>
+    .success {
+      color: #1e8e3e;
+    }
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <google-codelab-analytics gaid="UA-49880327-14"></google-codelab-analytics>
+  <google-codelab codelab-gaid=""
+                  id="parallel-release-worktrees"
+                  title="Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees"
+                  environment="web"
+                  feedback-link="https://github.com/evanca/gde-sprint-26-worktrees-public/issues">
+    
+      <google-codelab-step label="Introduction" duration="3">
+        <p>This codelab is part of the <strong>2026 Agentic Architect Sprint by Google</strong>.</p>
+<p>It focuses on protecting the live filesystem and Git history while peer agents develop concurrent changesets — each agent works in an isolated Git worktree, so none of them edit the live checkout.</p>
+<p>You begin with a finished Developer Release Dashboard. Three agents work in isolated Git worktree directory shadows:</p>
+<ul>
+<li>An environment-filter agent.</li>
+<li>A risk-filter agent.</li>
+<li>An accessibility agent.</li>
+</ul>
+<p>The live <code>main</code> checkout stays untouched. You inspect each branch, integrate all three, resolve one intentional conflict, verify the combined UX, and clean up the temporary workspaces.</p>
+<h2 is-upgraded>What You Will Build</h2>
+<p>A verified release of a finished Developer Release Dashboard that combines three concurrently developed changesets:</p>
+<ul>
+<li>Environment filtering.</li>
+<li>Risk filtering.</li>
+<li>Accessibility improvements (keyboard focus and a polite live region).</li>
+</ul>
+<p>The integrated dashboard&#39;s default view shows every release across the status, environment, and risk filters:</p>
+<p class="image-container"><img alt="The Release Control dashboard on load, showing all six releases with the status, environment, and risk filters" src="img/e57742ccc42d7408.png"></p>
+<h2 is-upgraded>What You Will Learn</h2>
+<ul>
+<li>How native worktree execution isolates agent edits from the live checkout.</li>
+<li>How to inspect worktrees, branches, commits, and diffs.</li>
+<li>How to choose a merge order for concurrent changesets.</li>
+<li>How to resolve a conflict without discarding either agent&#39;s intent.</li>
+<li>How to verify and clean up an integrated release.</li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prepare Antigravity 2.0" duration="4">
+        <h2 is-upgraded>Step 1: Install Antigravity 2.0</h2>
+<p>Download and install Antigravity 2.0 from:</p>
+<p><a href="https://antigravity.google/download" target="_blank">antigravity.google/download</a></p>
+<p>This codelab uses <strong>Antigravity 2.0 — the desktop command center, which has the white logo.</strong> Do <strong>not</strong> use the <strong>Antigravity IDE (black logo)</strong>; it is a different product surface, and the native isolated-worktree workflow taught here is driven from the 2.0 desktop app. Confirm the app you open shows the white logo before continuing.</p>
+<p>Follow the current onboarding and sign-in flow shown by the application.</p>
+<aside class="warning"><p> Use the current official documentation for installation and sign-in. This codelab does not substitute CLI login commands for the Antigravity 2.0 app workflow. </p>
+</aside>
+<h2 is-upgraded>Step 2: Choose a Supported Sign-In Path</h2>
+<p>Choose the path available to you:</p>
+<ul>
+<li><strong>Recommended quick path:</strong> Sign in normally with your Google Account through the app onboarding flow.</li>
+<li><strong>Optional enterprise path:</strong> Use Antigravity through the Gemini Enterprise Agent Platform if your organization provides it.</li>
+</ul>
+<p>If you use the enterprise path, ask your administrator to complete the documented setup:</p>
+<ol type="1">
+<li>Create or select a Google Cloud project with billing enabled.</li>
+<li>Enable the Agent Platform API: <code>aiplatform.googleapis.com</code>.</li>
+<li>Grant administrators enabling services <code>roles/serviceusage.serviceUsageAdmin</code>.</li>
+<li>Grant Antigravity users <code>roles/aiplatform.user</code>.</li>
+</ol>
+<p>The enterprise guide documents supported Antigravity endpoints as <code>global</code>, <code>eu</code>, and <code>us</code>. Follow your organization&#39;s selected configuration.</p>
+<p>Official reference: <a href="https://antigravity.google/docs/enterprise" target="_blank">Use Antigravity with Gemini Enterprise Agent Platform</a></p>
+<h2 is-upgraded>Step 3: Confirm Prerequisites for Worktree Mode</h2>
+<p>This codelab also requires Git and Node.js 20+, and it intentionally requires Antigravity 2.0&#39;s native isolated worktree mode; a manual Git-worktree substitute would miss the featured 2.0 product capability and the lesson.</p>
+<pre><code language="language-bash" class="language-bash">git --version
+node --version
+</code></pre>
+<p>Confirm that the product exposes its native isolated-worktree execution action before continuing.</p>
+<p>Official references:</p>
+<ul>
+<li><a href="https://antigravity.google/product/antigravity-2" target="_blank">Antigravity 2.0 overview</a></li>
+<li><a href="https://antigravity.google/docs/getting-started" target="_blank">Antigravity 2.0 getting started</a></li>
+</ul>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Prepare the Finished Starter" duration="5">
+        <p>This codelab starts from a finished Developer Release Dashboard in <code>workspace/</code> — a static app that already renders release cards and supports status filtering, with a passing test suite. You let peer agents add environment filtering, risk filtering, and accessibility improvements across isolated worktrees; you do not build the dashboard yourself.</p>
+<p>Pull down just the <code>workspace/</code> folder with a sparse checkout, then turn it into a disposable Git repository (the worktrees you create later attach to this repo):</p>
+<pre><code language="language-bash" class="language-bash">git clone --no-checkout --depth 1 https://github.com/evanca/gde-sprint-26-worktrees-public.git
+cd gde-sprint-26-worktrees-public
+git sparse-checkout init --cone
+git sparse-checkout set workspace
+git checkout
+cd workspace
+git init -b main
+git add .
+git commit -m &#34;Add finished release dashboard starter&#34;
+npm test
+</code></pre>
+<p>Run the dashboard:</p>
+<pre><code language="language-bash" class="language-bash">python3 -m http.server 8080
+</code></pre>
+<p>Open <code>http://localhost:8080/</code>. Confirm the existing status filter works, then stop the server.</p>
+<p>Record the baseline commit and verify the checkout is clean:</p>
+<pre><code language="language-bash" class="language-bash">git status --short
+git log --oneline -1
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Launch Isolated Agent Workspaces" duration="8">
+        <p>Open <code>workspace/</code> in Antigravity 2.0. For each task brief below, paste the brief as the goal and launch the agent in <strong>New Worktree</strong> mode.</p>
+<p>In the composer, two controls sit under the prompt:</p>
+<ul>
+<li>The <strong>mode</strong> control (shown as <strong><code>New Worktree</code></strong>): keep it on New Worktree so the agent runs in an isolated worktree instead of your live folder (Local Mode).</li>
+<li>The <strong>base-branch</strong> control (shown as <strong><code>main</code></strong>): this is the branch the new worktree is forked <em>from</em>, not the name of the branch it creates. Leave it on <code>main</code>.</li>
+</ul>
+<p>Antigravity 2.0 creates each isolated worktree and assigns its branch automatically, deriving the name from the task goal. <strong>Note the branch name it assigns to each task</strong> — you will merge those branches by name later. The branch names below are examples; substitute the ones your run assigns.</p>
+<p><strong>Task 1 — Environment filter</strong> (example branch <code>add-environment-release-filter</code>):</p>
+<pre><code language="language-text" class="language-text">Add an environment filter to the existing Release Control dashboard.
+
+Stay focused:
+- Update only js/filters.js and a new tests/environment-filter.test.js.
+- Add an environment option to getVisibleDeployments.
+- Add environment values to FILTER_OPTIONS; the generic UI will render the control.
+- Preserve the existing status filter.
+- Add tests for environment-only filtering.
+- Do not add risk filtering or accessibility changes.
+- Run npm test.
+- Commit the completed changeset with message: Add environment release filter
+</code></pre>
+<p><strong>Task 2 — Risk filter</strong> (example branch <code>add-risk-release-filter</code>):</p>
+<pre><code language="language-text" class="language-text">Add a risk-level filter to the existing Release Control dashboard.
+
+Stay focused:
+- Update only js/filters.js and a new tests/risk-filter.test.js.
+- Add a risk option to getVisibleDeployments.
+- Add risk values to FILTER_OPTIONS; the generic UI will render the control.
+- Preserve the existing status filter.
+- Add tests for risk-only filtering.
+- Do not add environment filtering or accessibility changes.
+- Run npm test.
+- Commit the completed changeset with message: Add risk release filter
+</code></pre>
+<p><strong>Task 3 — Accessibility</strong> (example branch <code>improve-release-dashboard-accessibility</code>):</p>
+<pre><code language="language-text" class="language-text">Improve the accessibility of the existing Release Control dashboard without adding filters.
+
+Stay focused:
+- Update only index.html, css/index.css, and js/app.js.
+- Give the release section and filter toolbar clear accessible names.
+- Make result-count changes announce through a polite live region.
+- Add a strong visible focus style.
+- Preserve existing status-filter behavior.
+- Do not edit js/filters.js or tests/filters.test.js.
+- Run npm test.
+- Commit the completed changeset with message: Improve release filter accessibility
+</code></pre>
+<p>Launch all three before waiting for results. Antigravity 2.0 creates each isolated directory shadow, runs the peer agent there, and leaves a focused branch for review. Observe the product&#39;s workspace indicators while the agents run.</p>
+<p>Each agent pauses for approval before it runs a command such as <code>npm test</code>. When prompted, choose <strong>&#34;Yes, and always allow ‘npm test&#39; in this project&#34;</strong> so the remaining agents and the integration step do not re-prompt. The agent then finishes its changeset and commits on its own branch.</p>
+<p>Each agent launches from the composer in New Worktree mode:</p>
+<p class="image-container"><img alt="Antigravity 2.0 composer in New Worktree mode with a task brief, ready to launch an isolated agent" src="img/c45be0c02cf05c30.png"></p>
+<p>With all three launched, the peer agents run concurrently in separate isolated worktrees:</p>
+<p class="image-container"><img alt="Three peer agents running concurrently in separate Antigravity 2.0 worktrees" src="img/1ec762447d1cbf83.png"></p>
+<p>Because the agents run concurrently, the parallel wall-clock time is approximately the longest single task, whereas running them one at a time would take the sum of all three.</p>
+<p>Official reference: <a href="https://antigravity.google/docs/getting-started" target="_blank">Antigravity 2.0 getting started</a></p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Inspect Concurrent Changesets" duration="5">
+        <p>Return to the live checkout:</p>
+<pre><code language="language-bash" class="language-bash">cd workspace
+git worktree list
+git status --short
+git log --oneline --all --graph --decorate
+</code></pre>
+<p><code>git worktree list</code> prints the path and branch of each worktree. Antigravity creates the worktrees under your home directory (for example <code>~/.gemini/antigravity/worktrees/<project>/<branch></code>) and names each branch after the task. In a typical run the branches are <code>add-environment-release-filter</code>, <code>add-risk-release-filter</code>, and <code>improve-release-dashboard-accessibility</code>. Use the names from your own <code>git worktree list</code> in the commands below.</p>
+<p class="image-container"><img alt="git worktree list showing the live checkout plus one isolated worktree per agent branch" src="img/dfb6382b27e973e6.gif"></p>
+<p>The live checkout should still be clean. Review each changeset before integration:</p>
+<pre><code language="language-bash" class="language-bash">git diff main..add-environment-release-filter --stat
+git diff main..add-risk-release-filter --stat
+git diff main..improve-release-dashboard-accessibility --stat
+</code></pre>
+<p>The feature agents both change <code>js/filters.js</code>. Their separate tests should make each intent clear. The accessibility agent owns different files and should merge cleanly.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Integrate and Resolve the Conflict" duration="10">
+        <p>Start a new conversation in <strong>New Worktree</strong> mode from <code>main</code>. This forks a clean fourth worktree — your integration workspace. Its branch is auto-named too (for example <code>integrate-all-release-filters</code>).</p>
+<p>Give the integration agent this goal, substituting the branch names from your own <code>git worktree list</code>:</p>
+<pre><code language="language-text" class="language-text">Integrate three peer branches into this worktree (it is forked from main). Use git, asking for command approval as needed.
+
+1. Merge these branches into the current branch, in this exact order:
+   - improve-release-dashboard-accessibility
+   - add-environment-release-filter
+   - add-risk-release-filter
+2. The third merge conflicts in js/filters.js. Resolve it so status, environment, and risk filtering all work together: the selector in getVisibleDeployments must require every active filter to match (matchesStatus &amp;&amp; matchesEnvironment &amp;&amp; matchesRisk), and FILTER_OPTIONS must contain status, environment, and risk. Do not discard either feature branch&#39;s intent.
+3. Add tests for a combined multi-filter match and a no-match case.
+4. Run npm test until everything passes.
+5. Commit the integrated result with message: Integrate concurrent release filters
+
+Then explain how you resolved the conflict.
+</code></pre>
+<p>The first two merges (accessibility, then one feature branch) apply cleanly; the third stops at a conflict in <code>js/filters.js</code> because both feature branches edited it. Approve the <code>git</code> and <code>npm test</code> commands when the agent prompts.</p>
+<p class="image-container"><img alt="Terminal showing the third merge stopping with a conflict in js/filters.js" src="img/629380ca18d65948.gif"></p>
+<p>As the agent works the third merge, it hits the planned conflict in <code>js/filters.js</code> and opens the file to resolve it:</p>
+<p class="image-container"><img alt="The integration agent encountering the js/filters.js merge conflict and opening the file to resolve it" src="img/476d29276ec9108e.png"></p>
+<p>Review the resolution before moving on. The selector must require every active filter to match; it must not choose one branch wholesale. Confirm <code>npm test</code> is green and the agent committed <code>Integrate concurrent release filters</code>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Verify the Integrated Release" duration="5">
+        <p>Run the integrated dashboard:</p>
+<pre><code language="language-bash" class="language-bash">python3 -m http.server 8080
+</code></pre>
+<p>Open <code>http://localhost:8080/</code> and verify:</p>
+<ol type="1">
+<li>Status-only, environment-only, and risk-only filtering work.</li>
+<li>Combined filters narrow the results correctly.</li>
+<li>A no-match selection shows a useful empty state.</li>
+<li>Filter controls are keyboard accessible and have visible focus.</li>
+<li>Result-count changes are announced by a polite live region.</li>
+<li>The browser console has no errors.</li>
+</ol>
+<p>The automated suite confirms the combined filtering and the integrated build:</p>
+<p class="image-container"><img alt="npm test passing with eight tests and static verification" src="img/4b8a8791198eb883.gif"></p>
+<p>If the agents&#39; output differs and the suite fails, compare against the completed build in the <a href="https://github.com/evanca/gde-sprint-26-worktrees-public/tree/main/reference" target="_blank"><code>reference/</code> folder of the codelab repository</a>.</p>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Promote and Clean Up" duration="4">
+        <p>Return to the live checkout and fast-forward the verified integration. Use the integration branch name from your <code>git worktree list</code> (for example <code>integrate-all-release-filters</code>):</p>
+<pre><code language="language-bash" class="language-bash">cd workspace
+git merge --ff-only integrate-all-release-filters
+npm test
+</code></pre>
+<p class="image-container"><img alt="git merge &amp;ndash;ff-only fast-forwarding the verified integration onto main" src="img/76f3955f5aa73d85.gif"></p>
+<p>In Antigravity 2.0, archive the four completed workspaces (each conversation&#39;s <strong>Archive</strong> action):</p>
+<p class="image-container"><img alt="Archiving a completed isolated workspace in Antigravity 2.0" src="img/ae71e3272d411df1.png"></p>
+<p>Archiving the conversation does not delete its worktree directory, so remove the worktrees explicitly from the live checkout, then prune and confirm only <code>main</code> remains (substitute the paths from your <code>git worktree list</code>):</p>
+<pre><code language="language-bash" class="language-bash">git worktree remove ~/.gemini/antigravity/worktrees/workspace/add-environment-release-filter
+git worktree remove ~/.gemini/antigravity/worktrees/workspace/add-risk-release-filter
+git worktree remove ~/.gemini/antigravity/worktrees/workspace/improve-release-dashboard-accessibility
+git worktree remove ~/.gemini/antigravity/worktrees/workspace/integrate-all-release-filters
+git worktree prune
+git worktree list
+</code></pre>
+<p>Delete the merged temporary branches. All four delete with <code>-d</code> (not <code>-D</code>), which confirms every changeset reached <code>main</code>:</p>
+<pre><code language="language-bash" class="language-bash">git branch -d add-environment-release-filter add-risk-release-filter improve-release-dashboard-accessibility integrate-all-release-filters
+</code></pre>
+
+
+      </google-codelab-step>
+    
+      <google-codelab-step label="Conclusion" duration="2">
+        <p>You shipped a combined release from concurrent agent changesets without allowing any agent to edit the live checkout.</p>
+<p>You practiced:</p>
+<ul>
+<li>Native isolated worktree execution.</li>
+<li>Antigravity 2.0 workspace creation and lifecycle management.</li>
+<li>Peer-agent branch ownership.</li>
+<li>Changeset inspection and merge ordering.</li>
+<li>Conflict resolution that preserves both intents.</li>
+<li>Automated and browser-based UX verification.</li>
+<li>Safe worktree cleanup.</li>
+</ul>
+<p>In the shipped release, the three concurrently built filters work together — combining status, environment, and risk narrows the dashboard to a single matching release:</p>
+<p class="image-container"><img alt="Combining the status, environment, and risk filters narrows the dashboard to one matching release" src="img/d6e3d83473de483e.png"></p>
+<p>Worktrees solve filesystem isolation. They do not remove the need for architectural judgment at integration boundaries.</p>
+
+
+      </google-codelab-step>
+    
+  </google-codelab>
+
+  <script src="https://storage.googleapis.com/claat-public/native-shim.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/custom-elements.min.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/prettify.js"></script>
+  <script src="https://storage.googleapis.com/claat-public/codelab-elements.js"></script>
+  <script src="//support.google.com/inapp/api.js"></script>
+
+</body>
+</html>

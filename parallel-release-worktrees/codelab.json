@@ -1,0 +1,31 @@
+{
+  "environment": "web",
+  "format": "html",
+  "prefix": "https://storage.googleapis.com",
+  "mainga": "UA-49880327-14",
+  "updated": "2026-06-16T22:31:40+03:00",
+  "id": "parallel-release-worktrees",
+  "duration": 46,
+  "title": "Ship a Parallel Developer Dashboard Release with Isolated Git Worktrees",
+  "authors": "evanca",
+  "summary": "Ship a verified dashboard release by running peer agents in isolated Git worktrees and integrating their changesets.",
+  "source": "codelab.md",
+  "theme": "",
+  "status": [
+    "published"
+  ],
+  "category": [
+    "antigravity",
+    "git",
+    "web"
+  ],
+  "tags": [
+    "antigravity-2.0",
+    "concurrency",
+    "git",
+    "web",
+    "worktrees"
+  ],
+  "feedback": "https://github.com/evanca/gde-sprint-26-worktrees-public/issues",
+  "url": "parallel-release-worktrees"
+}

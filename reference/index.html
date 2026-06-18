@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Release Control</title>
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Engineering operations</p>
+      <h1>Release Control</h1>
+      <p class="intro">A clear view of today’s active deployments.</p>
+    </div>
+    <div class="system-health"><span></span> Systems operational</div>
+  </header>
+  <main>
+    <section class="summary" aria-label="Release summary">
+      <div><strong>6</strong><span>Active releases</span></div>
+      <div><strong>3</strong><span>Environments</span></div>
+      <div><strong>2</strong><span>Deploying now</span></div>
+    </section>
+    <section class="release-section" aria-labelledby="release-heading">
+      <h2 id="release-heading" class="visually-hidden">Active releases</h2>
+      <div class="toolbar" aria-label="Filter active releases">
+        <form id="filter-controls"></form>
+        <p id="result-count" role="status" aria-live="polite">6 releases shown</p>
+      </div>
+      <div id="release-grid" class="release-grid"></div>
+    </section>
+  </main>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
